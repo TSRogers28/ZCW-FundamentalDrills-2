@@ -48,27 +48,38 @@ public class StringsAndThings {
      * equalIsNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean equalIsNot(String input) {
-        int countIs = 0;
-        int x = 0;
-        while(x != -1){
-            x = input.indexOf("is", x);
-            if(x != -1) {
-                countIs++;
-                x++;
-            }
-        }
-        int countNot = 0;
-        int y = 0;
-        while(y != -1) {
-            y = input.indexOf("not", y);
-            if (y != -1) {
-                countNot++;
-                y++;
-            }
-        }
-        boolean answer = (countIs == countNot) ? true : false;
+        int countIs = wordCounter(input, "is");
+//        int x = 0;
+//        while(x != -1){
+//            x = input.indexOf("is", x);
+//            if(x != -1) {
+//                countIs++;
+//                x++;
+//            }
+//        }
+        int countNot = wordCounter(input, "not");
+//        int y = 0;
+//        while(y != -1) {
+//            y = input.indexOf("not", y);
+//            if (y != -1) {
+//                countNot++;
+//                y++;
+//            }
+//        }
+//        boolean answer =
 
-        return answer;
+        return answer = (countIs == countNot) ? true : false;;
+    }
+
+    public Integer wordCounter(String input, String word){
+        int counter = 0;
+        Pattern pattern = Pattern.compile(word);
+        Matcher matcher = pattern.matcher(input);
+        while(pattern.find()){
+            counter++;
+        }
+        return counter;
+
     }
 
     /**
